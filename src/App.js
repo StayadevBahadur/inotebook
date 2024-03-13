@@ -4,15 +4,22 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Routes,
   Link
 } from "react-router-dom";
 import Navbar from './Components/Navbar';
+import Home from './Components/Home';
 
 function App() {
   return (
-   <>
-   <Navbar/>
-   </>
+    <> 
+    <Router>   
+    <Navbar /> 
+      <Routes>
+        <Route exact path="/" element={<Home/>} />
+      </Routes>
+    </Router>
+    </>
   );
 }
 
