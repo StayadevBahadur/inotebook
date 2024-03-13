@@ -12,13 +12,13 @@ import Home from './Components/Home';
 
 function App() {
   return (
-    <> 
-    <Router>   
-    <Navbar /> 
-      <Routes>
-        <Route exact path="/" element={<Home/>} />
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+        </Routes>
+      </Router>
     </>
   );
 }
