@@ -1,13 +1,15 @@
 import React from 'react'
 import NoteContext from '../Context/notes/NoteContext';
-import { useContext} from "react";
+import { useContext,useEffect} from "react";
 import NoteItem from './NoteItem';
 import AddNote from './AddNote';
 
 const Notes = (props) => {  
     const contex = useContext(NoteContext);
-    const { notes} = contex;
-    // Function to show alert
+    const { notes,getNotes} = contex;
+    useEffect(()=>{
+        getNotes();
+    },[])
 
  
 

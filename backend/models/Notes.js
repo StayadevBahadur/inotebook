@@ -16,7 +16,7 @@ const NoteSchema = new mongoose.Schema({
     },
     tag: {
         type: String,
-        required: true,
+       
     }
 })
 // before using a scheema you have to create a  model and 
