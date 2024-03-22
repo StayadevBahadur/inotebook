@@ -12,7 +12,10 @@ const NoteItem = (props) => {
     }
     const contex = useContext(NoteContext)
     const{deleteNote} =contex;
-    return (    
+
+    return (
+
+ 
         <div className='col  mx-auto '>
             <div className="card  my-3 " style={myStyle}>
                 <div className="card-body">
@@ -24,6 +27,7 @@ const NoteItem = (props) => {
                 </div>
             </div>
         </div>
+      
     )
 }
 

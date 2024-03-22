@@ -10,7 +10,7 @@ const Notes = (props) => {
     useEffect(()=>{
         getNotes();
     },[])
-
+ 
  
 
     return (
