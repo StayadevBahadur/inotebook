@@ -4,6 +4,7 @@ import { useContext,useState } from 'react';
 
 
 
+
 const AddNote = (props) => {
 
     const contex = useContext(NoteContext);
@@ -18,10 +19,13 @@ const AddNote = (props) => {
     const onChange = (e) => {
         setNote({...note,[e.target.name]:e.target.value})
     }
-
-    return (
+   
+    return (<>
+       
         <div>
+      
             <div className="container my-3">
+           
                 <h1>Add a Note</h1>
                 <form className='my-3'>
                     <div className="mb-3">
@@ -40,6 +44,7 @@ const AddNote = (props) => {
                 </form>
             </div>
         </div>
+        </>
     )
 }
 
