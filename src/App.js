@@ -11,6 +11,8 @@ import Home from './Components/Home';
 import About from './Components/About';
 import NoteState from './Context/notes/NoteState';
 import Alert from './Components/Alert';
+import Login from './Components/Login'
+import SingUp from './Components/SingUp';
 
 function App() {
   const [alert, setalert] = useState(null);
@@ -35,6 +37,8 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home showAlert={showAlert}/> }   />
             <Route exact path="/about" element={<About />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/signup" element={<SingUp />} />
           </Routes>
           </div>
         </Router>

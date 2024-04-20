@@ -1,6 +1,7 @@
 import NoteContext from "./NoteContext";
 import React from "react";
 import { useState } from 'react';
+import { json } from "react-router-dom";
 
 
 const NoteState = (props) => {
@@ -52,15 +53,11 @@ const NoteState = (props) => {
       },
 
       body: JSON.stringify({ title, description, tag }), // body data type must match "Content-Type" header
+
     });
-    let note = {
-      "_id": "65f01b8e599c077580955d4d",
-      "user": "65e971361e87468aa2ed0da2",
-      "title": title,
-      "description": description,
-      "tag": tag,
-      "__v": 0
-    };
+    
+    const note = await response.json();
+  
     setNotes(notes.concat(note))
     console.log('adding a new note')
   }
@@ -84,7 +81,7 @@ const NoteState = (props) => {
   // Function for edditing a exsisting note
   const edditNote = async (id, title, description, tag) => {
     const response = await fetch(`${host}notes/updatenotes/${id}`, {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      method: "PUT", // *GET, POST, PUT, DELETE, etc.
 
       headers: {
         "Content-Type": "application/json",
@@ -94,6 +91,7 @@ const NoteState = (props) => {
 
       body: JSON.stringify({title,description,tag}), // body data type must match "Content-Type" header
     });
+    let newNote = JSON.parse(JSON.stringify(notes))
     const json = await response.json();
     for (let index = 0; index < notes.length; index++) {
       const element = notes[index];
@@ -102,7 +100,8 @@ const NoteState = (props) => {
           element.description = description;
           element.tag = tag;
       }
-    } 
+    }
+    // setNotes(newNo te)
   }
   return (
     < NoteContext.Provider value={{ notes, setNotes, addNote, deleteNote, edditNote,getNotes }}>

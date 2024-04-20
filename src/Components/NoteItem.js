@@ -3,7 +3,7 @@ import NoteContext from '../Context/notes/NoteContext';
 import Modal from './Modal';
 
 const NoteItem = (props) => {
-    const { note, } = props;
+    const { note, openModal} = props;
     const myStyle = {
         borderRadius: '10px',
         background: 'linear-gradient(145deg, #f0f0f0, #cacaca)',
@@ -27,7 +27,7 @@ const NoteItem = (props) => {
                         <p className="card-text"> {note.description} </p>
                         <p className="card-text"> {note.tag} </p>
                         <i className="fa-solid fa-trash-can fa-xl mx-3" onClick={() => { deleteNote(note._id) }}></i>
-                        <i className="fa-regular fa-pen-to-square fa-xl " onClick={()=>{props.setModal(true)}}></i>
+                        <i className="fa-regular fa-pen-to-square fa-xl " onClick={()=>{openModal(note)}}></i>
                     </div>
                 </div>
             </div>

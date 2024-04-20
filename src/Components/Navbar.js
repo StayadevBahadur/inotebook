@@ -25,6 +25,10 @@ const Navbar = () => {
         </li>
       </ul>
     </div>
+    <div>
+    <Link class="btn btn-primary  btn-sm mx-1" role="button" to="/login" aria-disabled="true">Login</Link>
+    <Link class="btn btn-primary btn-sm mx-1" role="button" to="signup" aria-disabled="true">SignUp</Link>
+    </div>
   </div>
 </nav>
     </>
