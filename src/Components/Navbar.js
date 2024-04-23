@@ -1,12 +1,18 @@
 import React from 'react'
-import { Link ,useLocation } from "react-router-dom";
-import { useEffect } from 'react';
+import { Link ,useLocation,useNavigate } from "react-router-dom";
+// import { useEffect } from 'react';
 const Navbar = () => {
   let location = useLocation();
 
-  useEffect(() => {
-   console.log(location.pathname)
-  }, [location]);
+  // useEffect(() => { 
+  //  console.log(location.pathname)
+  // }, [location]);
+  const navigate = useNavigate();
+
+  const handleLogout=()=>{
+    localStorage.removeItem('token');
+    navigate('/')  
+  }
   return (
     <>
    <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary  "  data-bs-theme="dark">
@@ -25,10 +31,10 @@ const Navbar = () => {
         </li>
       </ul>
     </div>
-    <div>
-    <Link class="btn btn-primary  btn-sm mx-1" role="button" to="/login" aria-disabled="true">Login</Link>
-    <Link class="btn btn-primary btn-sm mx-1" role="button" to="signup" aria-disabled="true">SignUp</Link>
-    </div>
+   {localStorage.getItem('token')?<Link className="btn btn-primary  btn-sm mx-1" role="button" to="/" aria-disabled="true" onClick={handleLogout}>Logout</Link>: <div>
+    <Link className="btn btn-primary  btn-sm mx-1" role="button" to="/login" aria-disabled="true">Login</Link>
+    <Link className="btn btn-primary btn-sm mx-1" role="button" to="signup" aria-disabled="true">SignUp</Link>
+    </div>}
   </div>
 </nav>
     </>

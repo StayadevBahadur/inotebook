@@ -4,12 +4,19 @@ import { useContext,useEffect,useState} from "react";
 import NoteItem from './NoteItem';
 import AddNote from './AddNote';
 import Modal from './Modal';
+import { useNavigate } from 'react-router-dom';
 
 const Notes = (props) => {  
+    const navigate = useNavigate();
     const contex = useContext(NoteContext);
     const { notes, getNotes,edditNote } = contex;
     useEffect(()=>{
-        getNotes();
+        if (localStorage.getItem('token')) {
+            getNotes(); 
+        }else{
+            navigate('/');
+        }
+        
     },[])
  
  const [showModal , setModal] = useState(false);
@@ -46,10 +53,8 @@ const Notes = (props) => {
             <AddNote/>
             {showModal && <Modal setModal = {setModal} onChange = {onChange} note = {note} handleClick= {handleClick} />}
             <div className="row my-3">
-                <h2>Your Notes</h2>               
-                  {notes.lenght === 0 && "No notes to display"}  
-              
-                   {notes.map((note, index) => {
+                <h2>Your Notes</h2>                            
+              {notes.map((note, index) => {
                     return <NoteItem note={note} key={index} openModal = {openModal}  />
                 }
                 )}

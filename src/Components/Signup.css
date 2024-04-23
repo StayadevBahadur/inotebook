@@ -1,0 +1,37 @@
+.SignUpContainer{
+    border: 3px solid rgb(135, 128, 128);
+    border-radius: 3%;
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 1%;
+}
+/* Default styles for SignUpContainer */
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+  }
+ 
+@media only screen and (max-width: 365px) {
+    body {
+      background-color:red;
+    }
+    .SignUpContainer{
+        width: 100%;
+        margin: 0;
+        border: none;
+    }
+  }
+@media only screen and (min-width: 365px)and (max-width: 706px) {
+    body {
+      background-color:yellow;
+    }
+    .SignUpContainer{
+        width: 70%;
+        margin-left: 15%;
+        border: none;
+    }
+  }
+ 
+
+  

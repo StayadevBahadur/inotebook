@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext} from 'react'
 import NoteContext from '../Context/notes/NoteContext';
-import Modal from './Modal';
 
 const NoteItem = (props) => {
     const { note, openModal} = props;

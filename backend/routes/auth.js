@@ -22,7 +22,7 @@ router.post('/CreateUser', [
   // Check whethere the user with this email exists already 
   let email = await usser.findOne({ email: req.body.email });
   if (email) {
-    return res.status(404).json({ error: "Sorry a user with this email aleready exists" })
+    return res.status(404).json({success:false, error: "Sorry a user with this email aleready exists" })
   }
   const salt = await bcrypt.genSaltSync(10);
   const SecPass = await bcrypt.hash(req.body.password, salt);
@@ -30,7 +30,7 @@ router.post('/CreateUser', [
     name: req.body.name,
     email: req.body.email,
     password: SecPass,
-  }).then(usser => res.json({ authToken }));
+  }).then(usser => res.json({success:true, authToken }));
   const data = {
     usser: {
       id: usser.id
@@ -62,12 +62,12 @@ router.post('/login', [
 
     console.log(userEmail)
     if (!userEmail) {
-      return res.status(400).json({ error: "invalid credentail" })
+      return res.status(400).json({ error: "invalid credentail", success : false })
     }
     const passwordCompa = bcrypt.compareSync(password, userEmail.password);
 
     if (!passwordCompa) {
-      return res.status(400).json({ error: "invalid credentail" })
+      return res.status(400).json({ error: "invalid credentail", success : false })
     }
 
     const payload = {
@@ -77,10 +77,12 @@ router.post('/login', [
     }
 
     const authToken = jwt.sign(payload, JWT_SECRET);
-    res.json({ authToken })
+    const success = true;
+    res.json({success, authToken })
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal server error")
+    
   }
 })
 // Route 3: Get loged in user deatail POST "api/auth/GetUserDeatail", Login required
